@@ -9,25 +9,40 @@ import javax.imageio.ImageIO;
 
 public class Menu extends ElementoComImagem {
 
-	private Botao newGame ;
-	private Botao score;
-	private Botao credits;
-	private Botao exit;
+//	private Botao newGame ;
+//	private Botao score;
+//	private Botao credits;
+//	private Botao exit;
+	private BotaoTeste newGame ;
+	private BotaoTeste score;
+	private BotaoTeste credits;
+	private BotaoTeste exit;
+
 
 	
-	public Menu(int width, int height) {	
+	public Menu(int width, int height) {
 		super("resources/01 - Menu.png");
-		newGame = new Botao("resources/botao newgame.png", "New Game", width/2 , height/2 + height/6);
-		score = new Botao("resources/botao score.png", "New Game", width/2 , height/2 + height/6 +80);
-		credits = new Botao("resources/botao credits.png", "New Game",  width/2 , height/2 + height/6 +160);
-		exit = new Botao("resources/botao exit.png", "New Game",  width/2, height/2 + height/6 +240);
-//		exit.setWidth(248);
-//		exit.setHeight(50);
-
-		//imagem = loadImage("imagens/background pong.png");
-		//imagem = imagem.getScaledInstance(Jogo.getScreenWidth(), Jogo.getScreenHeight(), Image.SCALE_DEFAULT);
+		newGame = new BotaoTeste("NEW GAME",  width/2-30 , height/2 + height/6 );
+		score = new BotaoTeste("SCORE",  width/2 -30, height/2 + height/6 +80);
+		credits = new BotaoTeste("CREDITS",  width/2-30 , height/2 + height/6 +160);
+		exit = new BotaoTeste("EXIT",  width/2 -30, height/2 + height/6 +240);
 	}
 	
+	
+	
+//	public Menu(int width, int height) {	
+//		super("resources/01 - Menu.png");
+//		newGame = new Botao("resources/botao newgame.png", "New Game", width/2 , height/2 + height/6);
+//		score = new Botao("resources/botao score.png", "New Game", width/2 , height/2 + height/6 +80);
+//		credits = new Botao("resources/botao credits.png", "New Game",  width/2 , height/2 + height/6 +160);
+//		exit = new Botao("resources/botao exit.png", "New Game",  width/2, height/2 + height/6 +240);
+////		exit.setWidth(248);
+////		exit.setHeight(50);
+//
+//		//imagem = loadImage("imagens/background pong.png");
+//		//imagem = imagem.getScaledInstance(Jogo.getScreenWidth(), Jogo.getScreenHeight(), Image.SCALE_DEFAULT);
+//	}
+//	
 	
 	
 	
@@ -47,35 +62,35 @@ public class Menu extends ElementoComImagem {
 	
 	
 
-	public Botao getNewGame() {
+	public BotaoTeste getNewGame() {
 		return newGame;
 	}
 
-	public void setNewGame(Botao newGame) {
+	public void setNewGame(BotaoTeste newGame) {
 		this.newGame = newGame;
 	}
 
-	public Botao getScore() {
+	public BotaoTeste getScore() {
 		return score;
 	}
 
-	public void setScore(Botao score) {
+	public void setScore(BotaoTeste score) {
 		this.score = score;
 	}
 
-	public Botao getCredits() {
+	public BotaoTeste getCredits() {
 		return credits;
 	}
 
-	public void setCredits(Botao credits) {
+	public void setCredits(BotaoTeste credits) {
 		this.credits = credits;
 	}
 
-	public Botao getExit() {
+	public BotaoTeste getExit() {
 		return exit;
 	}
 
-	public void setExit(Botao exit) {
+	public void setExit(BotaoTeste exit) {
 		this.exit = exit;
 	}
 

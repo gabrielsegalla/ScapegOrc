@@ -10,8 +10,8 @@ public class Pause extends ElementoComImagem {
 	
 	
 	
-	public Pause(String fileName){
-		super("imagens/04 pause.png");
+	public Pause(int width, int height) {
+		super("resources/04 - pause.png");
 		
 		
 	}

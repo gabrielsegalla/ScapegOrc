@@ -26,11 +26,14 @@ public class Jogo extends Canvas {
 	private Menu menu;
 	private Pause pause;
 	private Credits credits;
+	private fase1 fase1;
+	private Score score;
 	private boolean isMenu;
 	private boolean isPause;
 	private boolean isStory;
 	private boolean isCredits;
-	
+	private boolean isScore;
+
 	private Botao botao;
 
 	public static int getScreenWidth() {
@@ -71,9 +74,14 @@ public class Jogo extends Canvas {
 		addMouseListener(new MouseInputHandler());
 
 		isPlaying = false;
-		isCredits= false;
+		isCredits = false;
 		isMenu = true;
+		isCredits = false;
 		menu = new Menu(this.getWidth(), this.getHeight());
+		fase1 = new fase1(this.getWidth(), this.getHeight());
+		pause = new Pause(this.getWidth(), this.getHeight());
+		credits = new Credits(this.getWidth(), this.getHeight());
+		score = new Score(this.getWidth(), this.getHeight());
 		isPause = false;
 
 	}
@@ -94,10 +102,13 @@ public class Jogo extends Canvas {
 
 			} else if (isCredits) {
 
-//				credits.draw(g);
+				credits.draw(g);
 
 			} else if (isPlaying) {
 
+				fase1.draw(g);
+			} else if (isScore) {
+				score.draw(g);
 			}
 
 			try {
@@ -118,15 +129,16 @@ public class Jogo extends Canvas {
 		jogo.gameLoop();
 	}
 
-	
-	private class MouseInputHandler extends MouseAdapter{
+	private class MouseInputHandler extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			
+
 			if (isMenu) {
 
-				if (e.getX() >= menu.getExit().getPosX() && e.getX() <= menu.getExit().getPosX() + menu.getExit().getWidth()
-					&& e.getY() <= menu.getExit().getPosY()	&& e.getY() >= menu.getExit().getPosY() - menu.getExit().getHeight()) {
+				if (e.getX() >= menu.getExit().getPosX()
+						&& e.getX() <= menu.getExit().getPosX() + menu.getExit().getWidth()
+						&& e.getY() <= menu.getExit().getPosY()
+						&& e.getY() >= menu.getExit().getPosY() - menu.getExit().getHeight()) {
 					System.out.println("Sair");
 					System.exit(0);
 				} else if (e.getX() >= menu.getNewGame().getPosX()
@@ -136,9 +148,10 @@ public class Jogo extends Canvas {
 					isPlaying = true;
 					isMenu = false;
 					isCredits = false;
+					isScore= false;
 					System.out.println("Jogo");
-				
-				}else if (e.getX() >= menu.getCredits().getPosX()
+
+				} else if (e.getX() >= menu.getCredits().getPosX()
 						&& e.getX() <= menu.getCredits().getPosX() + menu.getCredits().getWidth()
 						&& e.getY() <= menu.getCredits().getPosY()
 						&& e.getY() >= menu.getCredits().getPosY() - menu.getCredits().getHeight()) {
@@ -146,61 +159,82 @@ public class Jogo extends Canvas {
 					isCredits = true;
 					isPlaying = false;
 					isMenu = false;
+					isScore= false;
+				}else if (e.getX() >= menu.getScore().getPosX()
+						&& e.getX() <= menu.getScore().getPosX() + menu.getScore().getWidth()
+						&& e.getY() <= menu.getScore().getPosY()
+						&& e.getY() >= menu.getScore().getPosY() - menu.getScore().getHeight()) {
+					System.out.println("Score");
+					isScore= true;
+					isCredits = false;
+					isPlaying = false;
+					isMenu = false;
 				}
 			}
 		}
 	}
-	
-	
-	private class KeyInputHandler extends KeyAdapter{
+
+	private class KeyInputHandler extends KeyAdapter {
 		@Override
 		public void keyPressed(KeyEvent e) {
-			
-			if(isPlaying){
-			
-			if(e.getKeyCode()== KeyEvent.VK_W){
-			
-			} else if (e.getKeyCode() == KeyEvent.VK_S){
-			
-		}
-			
-			if (e.getKeyCode() == KeyEvent.VK_O){
-			
-			} else if(e.getKeyCode() == KeyEvent.VK_L){
-		
+			System.out.println(e.getKeyCode());
+			if (isPlaying) {
+
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					isPlaying = false;
+					isPause = true;
+				}
+			} else if (isPause) {
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					System.exit(0);
+				} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					isPause = false;
+					isPlaying = true;
+				}
+
+			}else if(isMenu){
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					System.exit(0);
+				}
+			}else if(isScore){
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					System.out.println("TAB");
+					isMenu = true;
+					isPlaying = false;
+					isPause = false;
+					isCredits = false;
+					isScore = false;
+					
+				}
+			}else if(isCredits){
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					System.out.println("TAB");
+					isMenu = true;
+					isPlaying = false;
+					isPause = false;
+					isCredits = false;
+					isScore = false;
+					
+				}
 			}
-			if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-				isPlaying = false;
-				isPause = true;
 		}
-	}else if(isPause){
-			if(e.getKeyCode()== KeyEvent.VK_ESCAPE){
-				System.exit(0);
-			}else if(e.getKeyCode() == KeyEvent.VK_SPACE){
-				isPause = false;
-				isPlaying = true;
-		}
-		
-		}
-	}
-		
+
 		@Override
-		public void keyReleased(KeyEvent e){
-			
-			if(e.getKeyCode()== KeyEvent.VK_W){
-		
-			} else if (e.getKeyCode() == KeyEvent.VK_S){
-		
+		public void keyReleased(KeyEvent e) {
+
+			if (e.getKeyCode() == KeyEvent.VK_W) {
+
+			} else if (e.getKeyCode() == KeyEvent.VK_S) {
+
 			}
-			
-			if (e.getKeyCode() == KeyEvent.VK_O){
-		
-			} else if(e.getKeyCode() == KeyEvent.VK_L){
-		
+
+			if (e.getKeyCode() == KeyEvent.VK_O) {
+
+			} else if (e.getKeyCode() == KeyEvent.VK_L) {
+
 			}
-			
-			
+
 		}
 	}
-	
+
 }

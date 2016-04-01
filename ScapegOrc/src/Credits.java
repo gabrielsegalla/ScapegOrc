@@ -2,8 +2,8 @@ import java.awt.Graphics2D;
 
 public class Credits extends ElementoComImagem {
 
-	public Credits(String fileName) {
-		super("imagens/07 - credits.png");
+	public Credits(int width, int height) {
+		super("resources/07 - credits.png");
 	}
 
 	@Override
