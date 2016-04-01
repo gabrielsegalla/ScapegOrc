@@ -190,6 +190,10 @@ public class Jogo extends Canvas {
 				} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 					isPause = false;
 					isPlaying = true;
+				}else if (e.getKeyCode() == KeyEvent.VK_END) {
+					isPause = false;
+					isPlaying = false;
+					isMenu = true;
 				}
 
 			}else if(isMenu){
@@ -198,7 +202,6 @@ public class Jogo extends Canvas {
 				}
 			}else if(isScore){
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-					System.out.println("TAB");
 					isMenu = true;
 					isPlaying = false;
 					isPause = false;
@@ -208,7 +211,6 @@ public class Jogo extends Canvas {
 				}
 			}else if(isCredits){
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-					System.out.println("TAB");
 					isMenu = true;
 					isPlaying = false;
 					isPause = false;
