@@ -21,7 +21,9 @@ public class Menu extends ElementoComImagem {
 		score = new Botao("resources/botao score.png", "New Game", width/2 , height/2 + height/6 +80);
 		credits = new Botao("resources/botao credits.png", "New Game",  width/2 , height/2 + height/6 +160);
 		exit = new Botao("resources/botao exit.png", "New Game",  width/2, height/2 + height/6 +240);
-		
+//		exit.setWidth(248);
+//		exit.setHeight(50);
+
 		//imagem = loadImage("imagens/background pong.png");
 		//imagem = imagem.getScaledInstance(Jogo.getScreenWidth(), Jogo.getScreenHeight(), Image.SCALE_DEFAULT);
 	}

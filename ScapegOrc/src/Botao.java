@@ -15,7 +15,6 @@ public class Botao extends ElementoComImagem{
 	private int width;
 	private int height;
 	
-	
 
 	
 	
@@ -34,6 +33,7 @@ public class Botao extends ElementoComImagem{
 		//g.setFont(new Font("Arial", Font.BOLD, 26));
 		//g.setColor(Color.magenta);
 		g.drawImage(getImagem(), posX, posY, null);
+		
 		
 		
 	}

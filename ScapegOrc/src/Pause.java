@@ -10,13 +10,17 @@ public class Pause extends ElementoComImagem {
 	
 	
 	
-	public Pause(){
+	public Pause(String fileName){
 		super("imagens/04 pause.png");
 		
 		
 	}
 	
-	
+	@Override
+	public void draw(Graphics2D g) {
+		super.draw(g);
+			
+	}
 
 	
 	

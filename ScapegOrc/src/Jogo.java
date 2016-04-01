@@ -14,28 +14,25 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Jogo extends Canvas {
-	
+
 	private static int screenWidth;
 	private static int screenHeight;
-	
-	
-	
-	
+
 	private boolean gameRunning;
 	private BufferStrategy strategy;
-	
-	private boolean isPlaying;
-	
 
-	private Menu menu;			
+	private boolean isPlaying;
+
+	private Menu menu;
 	private Pause pause;
-	private boolean isMenu;   
+	private Credits credits;
+	private boolean isMenu;
 	private boolean isPause;
 	private boolean isStory;
+	private boolean isCredits;
+	
 	private Botao botao;
-	
-	
-		
+
 	public static int getScreenWidth() {
 		return screenWidth;
 	}
@@ -43,107 +40,84 @@ public class Jogo extends Canvas {
 	public static int getScreenHeight() {
 		return screenHeight;
 	}
-	
-	
 
-	public Jogo(){
-		JFrame container = new JFrame();     
-		container.setUndecorated(true);    
+	public Jogo() {
+		JFrame container = new JFrame();
+		container.setUndecorated(true);
 		JPanel panel = (JPanel) container.getContentPane();
-				
+
 		Dimension fullScreen = Toolkit.getDefaultToolkit().getScreenSize();
-		
+
 		screenWidth = fullScreen.width;
 		screenHeight = fullScreen.height;
-		
-		
+
 		panel.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		panel.setLayout(null);
 		setBounds(0, 0, screenWidth, screenHeight);
 		panel.add(this);
-		
+
 		setIgnoreRepaint(true);
 		container.pack();
 		container.setResizable(false);
 		container.setVisible(true);
-		
-		requestFocus();	
+
+		requestFocus();
 		gameRunning = true;
-		
+
 		createBufferStrategy(2);
 		strategy = getBufferStrategy();
-		
+
 		addKeyListener(new KeyInputHandler());
 		addMouseListener(new MouseInputHandler());
-		
-		
-		
+
 		isPlaying = false;
+		isCredits= false;
 		isMenu = true;
 		menu = new Menu(this.getWidth(), this.getHeight());
 		isPause = false;
 
-		
 	}
 
-	public void gameLoop(){
-		while(gameRunning){
+	public void gameLoop() {
+		while (gameRunning) {
 			Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
-			
-			
+
 			g.setColor(Color.black);
 			g.fillRect(0, 0, this.getWidth(), this.getHeight());
-			
-			if(isMenu){
+
+			if (isMenu) {
 				menu.draw(g);
 
-				
-				
-				
-			
-				
-			}else if(isPause)	{
-								
+			} else if (isPause) {
+
 				pause.draw(g);
-				
-				
-			}else if(isStory){
-				
-				// quando clica new game, vai para "isStory" depois pro isPlaying
-				
-				
-				
-			}else if(isPlaying){
-			
-			
-		
-		
-			
-			
-		
-			
-			
+
+			} else if (isCredits) {
+
+//				credits.draw(g);
+
+			} else if (isPlaying) {
+
 			}
-			
+
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			g.dispose();   // precisa ficar no fim do while pra atualizar a  tela
+
+			g.dispose(); // precisa ficar no fim do while pra atualizar a tela
 			strategy.show();
-		}	
-				
+		}
+
 	}
-	
-	
+
 	public static void main(String[] args) {
 		Jogo jogo = new Jogo();
-		jogo.gameLoop();		
+		jogo.gameLoop();
 	}
-	
+
 	
 	private class MouseInputHandler extends MouseAdapter{
 		@Override
@@ -151,16 +125,26 @@ public class Jogo extends Canvas {
 			
 			if (isMenu) {
 
-				if (e.getX() >= menu.getExit().getPosX()
-						&& e.getX() <= menu.getExit().getPosX() + menu.getExit().getWidth()
-						&& e.getY() <= menu.getExit().getPosY()
-						&& e.getY() >= menu.getExit().getPosY() - menu.getExit().getHeight()) {
+				if (e.getX() >= menu.getExit().getPosX() && e.getX() <= menu.getExit().getPosX() + menu.getExit().getWidth()
+					&& e.getY() <= menu.getExit().getPosY()	&& e.getY() >= menu.getExit().getPosY() - menu.getExit().getHeight()) {
+					System.out.println("Sair");
 					System.exit(0);
 				} else if (e.getX() >= menu.getNewGame().getPosX()
 						&& e.getX() <= menu.getNewGame().getPosX() + menu.getNewGame().getWidth()
 						&& e.getY() <= menu.getNewGame().getPosY()
 						&& e.getY() >= menu.getNewGame().getPosY() - menu.getNewGame().getHeight()) {
 					isPlaying = true;
+					isMenu = false;
+					isCredits = false;
+					System.out.println("Jogo");
+				
+				}else if (e.getX() >= menu.getCredits().getPosX()
+						&& e.getX() <= menu.getCredits().getPosX() + menu.getCredits().getWidth()
+						&& e.getY() <= menu.getCredits().getPosY()
+						&& e.getY() >= menu.getCredits().getPosY() - menu.getCredits().getHeight()) {
+					System.out.println("creditos");
+					isCredits = true;
+					isPlaying = false;
 					isMenu = false;
 				}
 			}
