@@ -28,9 +28,9 @@ public class Menu extends ElementoComImagem  {
 	public Menu(int width, int height) {
 		super("resources/01 - Menu.png");
 		newGame = new BotaoTeste("NEW GAME",  width/2-30 , height/2 + height/6 );
-		score = new BotaoTeste("SCORE",  width/2 -30, height/2 + height/6 +80);
-		credits = new BotaoTeste("CREDITS",  width/2-30 , height/2 + height/6 +160);
-		exit = new BotaoTeste("EXIT",  width/2 -30, height/2 + height/6 +240);
+		score = new BotaoTeste("SCORE",  width/2 -30, height/2 + height/6 + height/15);
+		credits = new BotaoTeste("CREDITS",  width/2-30 , height/2 + height/6 +2*height/15);
+		exit = new BotaoTeste("EXIT",  width/2 -30, height/2 + height/6 +3*height/15);
 	}
 	
 	
