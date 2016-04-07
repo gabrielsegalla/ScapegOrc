@@ -154,17 +154,17 @@ public class Jogo extends Canvas {
 				if (e.getX() >= menu.getExit().getPosX()
 						&& e.getX() <= menu.getExit().getPosX()
 								+ menu.getExit().getWidth()
-						&& e.getY() <= menu.getExit().getPosY()
 						&& e.getY() >= menu.getExit().getPosY()
-								- menu.getExit().getHeight()) {
+						&& e.getY() <= menu.getExit().getPosY()
+								+ menu.getExit().getHeight()) {
 					System.out.println("Sair");
 					System.exit(0);
 				} else if (e.getX() >= menu.getNewGame().getPosX()
 						&& e.getX() <= menu.getNewGame().getPosX()
 								+ menu.getNewGame().getWidth()
-						&& e.getY() <= menu.getNewGame().getPosY()
 						&& e.getY() >= menu.getNewGame().getPosY()
-								- menu.getNewGame().getHeight()) {
+						&& e.getY() <= menu.getNewGame().getPosY()
+								+ menu.getNewGame().getHeight()) {
 					isPlaying = false;
 					isHist = true;
 					isMenu = false;
@@ -175,9 +175,9 @@ public class Jogo extends Canvas {
 				} else if (e.getX() >= menu.getCredits().getPosX()
 						&& e.getX() <= menu.getCredits().getPosX()
 								+ menu.getCredits().getWidth()
-						&& e.getY() <= menu.getCredits().getPosY()
 						&& e.getY() >= menu.getCredits().getPosY()
-								- menu.getCredits().getHeight()) {
+						&& e.getY() <= menu.getCredits().getPosY()
+								+ menu.getCredits().getHeight()) {
 					System.out.println("creditos");
 					isCredits = true;
 					isPlaying = false;
@@ -186,9 +186,9 @@ public class Jogo extends Canvas {
 				} else if (e.getX() >= menu.getScore().getPosX()
 						&& e.getX() <= menu.getScore().getPosX()
 								+ menu.getScore().getWidth()
-						&& e.getY() <= menu.getScore().getPosY()
 						&& e.getY() >= menu.getScore().getPosY()
-								- menu.getScore().getHeight()) {
+						&& e.getY() <= menu.getScore().getPosY()
+								+ menu.getScore().getHeight()) {
 					System.out.println("Score");
 					isScore = true;
 					isCredits = false;
@@ -244,7 +244,9 @@ public class Jogo extends Canvas {
 					isHist = false;
 				}
 			}else if(isHist){
-				if(e.getKeyCode() == KeyEvent.VK_SPACE){
+//			System.out.println(e.getKeyCode());
+				if(e.getKeyCode() == KeyEvent.VK_TAB){
+					
 					isHist = false;
 					isPlaying = true;
 					isPause = false;

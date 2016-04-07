@@ -1,6 +1,8 @@
 package Telas;
 import java.awt.Color;
+
 import Objetos.DemoFonts;
+
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -9,45 +11,46 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import Objetos.BotaoTeste;
+import Objetos.Botao;
+import Objetos.Botao;
 import Objetos.ElementoComImagem;
 
 public class Menu extends ElementoComImagem  {
 
+	private Botao newGame ;
+	private Botao score;
+	private Botao credits;
+	private Botao exit;
 //	private Botao newGame ;
 //	private Botao score;
 //	private Botao credits;
 //	private Botao exit;
-	private BotaoTeste newGame ;
-	private BotaoTeste score;
-	private BotaoTeste credits;
-	private BotaoTeste exit;
 
 
 	
-	public Menu(int width, int height) {
+//	public Menu(int width, int height) {
+//		super("resources/01 - Menu.png");
+//		newGame = new Botao("NEW GAME",  width/2-30 , height/2 + height/6 );
+//		score = new Botao("SCORE",  width/2 -30, height/2 + height/6 + height/15);
+//		credits = new Botao("CREDITS",  width/2-30 , height/2 + height/6 +2*height/15);
+//		exit = new Botao("EXIT",  width/2 -30, height/2 + height/6 +3*height/15);
+//	}
+	
+	
+	
+	public Menu(int width, int height) {	
 		super("resources/01 - Menu.png");
-		newGame = new BotaoTeste("NEW GAME",  width/2-30 , height/2 + height/6 );
-		score = new BotaoTeste("SCORE",  width/2 -30, height/2 + height/6 + height/15);
-		credits = new BotaoTeste("CREDITS",  width/2-30 , height/2 + height/6 +2*height/15);
-		exit = new BotaoTeste("EXIT",  width/2 -30, height/2 + height/6 +3*height/15);
+		newGame = new Botao("resources/botao newgame.png", "New Game", width/2 , height/2 + height/6);
+		score = new Botao("resources/botao score.png", "New Game", width/2 , height/2 + height/6 +80);
+		credits = new Botao("resources/botao credits.png", "New Game",  width/2 , height/2 + height/6 +160);
+		exit = new Botao("resources/botao exit.png", "New Game",  width/2, height/2 + height/6 +240);
+		exit.setWidth(248);
+		exit.setHeight(50);
+
+//		imagem = loadImage("imagens/background pong.png");
+//		imagem = imagem.getScaledInstance(Jogo.getScreenWidth(), Jogo.getScreenHeight(), Image.SCALE_DEFAULT);
 	}
 	
-	
-	
-//	public Menu(int width, int height) {	
-//		super("resources/01 - Menu.png");
-//		newGame = new Botao("resources/botao newgame.png", "New Game", width/2 , height/2 + height/6);
-//		score = new Botao("resources/botao score.png", "New Game", width/2 , height/2 + height/6 +80);
-//		credits = new Botao("resources/botao credits.png", "New Game",  width/2 , height/2 + height/6 +160);
-//		exit = new Botao("resources/botao exit.png", "New Game",  width/2, height/2 + height/6 +240);
-////		exit.setWidth(248);
-////		exit.setHeight(50);
-//
-//		//imagem = loadImage("imagens/background pong.png");
-//		//imagem = imagem.getScaledInstance(Jogo.getScreenWidth(), Jogo.getScreenHeight(), Image.SCALE_DEFAULT);
-//	}
-//	
 	
 	
 	
@@ -67,35 +70,35 @@ public class Menu extends ElementoComImagem  {
 	
 	
 
-	public BotaoTeste getNewGame() {
+	public Botao getNewGame() {
 		return newGame;
 	}
 
-	public void setNewGame(BotaoTeste newGame) {
+	public void setNewGame(Botao newGame) {
 		this.newGame = newGame;
 	}
 
-	public BotaoTeste getScore() {
+	public Botao getScore() {
 		return score;
 	}
 
-	public void setScore(BotaoTeste score) {
+	public void setScore(Botao score) {
 		this.score = score;
 	}
 
-	public BotaoTeste getCredits() {
+	public Botao getCredits() {
 		return credits;
 	}
 
-	public void setCredits(BotaoTeste credits) {
+	public void setCredits(Botao credits) {
 		this.credits = credits;
 	}
 
-	public BotaoTeste getExit() {
+	public Botao getExit() {
 		return exit;
 	}
 
-	public void setExit(BotaoTeste exit) {
+	public void setExit(Botao exit) {
 		this.exit = exit;
 	}
 
